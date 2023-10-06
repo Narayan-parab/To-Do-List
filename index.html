@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="" href="script.js">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Enter a new task">
+        <button onclick="addTask()">Add</button>
+        <ul id="taskList">
+        </ul>
+    </div>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const taskText = taskInput.value.trim();
+
+            if (taskText !== "") {
+                const taskList = document.getElementById("taskList");
+
+                const li = document.createElement("li");
+                li.innerHTML = `
+                    ${taskText}
+                    <button onclick="removeTask(this)">Delete</button>
+                `;
+
+                taskList.appendChild(li);
+
+                taskInput.value = "";
+            }
+        }
+
+        function removeTask(button) {
+            const taskList = document.getElementById("taskList");
+            const li = button.parentElement;
+            taskList.removeChild(li);
+        }
+    </script>
+    <footer>
+        <p> @2021 Narayan Parab To-Do-List </p>
+    </footer>
+</body>
+</html>
